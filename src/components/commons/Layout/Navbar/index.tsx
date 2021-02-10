@@ -7,16 +7,19 @@ const NavbarComponent = () => {
   const location = useLocation()
 
   const active = (page: string) => (page === location.pathname ? true : false)
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="/">Empolyee Manager</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <LinkStyle active={true} to="/">
+          <LinkStyle active={active('/')} to="/">
             Funcionários
           </LinkStyle>
-          <LinkStyle to="/">Funcionários</LinkStyle>
+          <LinkStyle active={active('/cargos')} to="/cargos">
+            Cargos
+          </LinkStyle>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
