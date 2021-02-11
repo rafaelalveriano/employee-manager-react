@@ -1,19 +1,37 @@
 import React from 'react'
-import { Layout } from '../commons'
+import { Layout, MenuButtons } from '../commons'
+import { EmployeeFormState, EmployeeType } from './EmployeType'
+import Form from './Form'
 import List from './List'
-import MenuButtons from './MenuButtons'
 
 const Empolyees = () => {
   const [ids, setIds] = React.useState<string[]>([])
-  console.log(ids)
+  const [showForm, setShowForm] = React.useState(true)
+  const [updateForm, setUpdateForm] = React.useState(false)
+  const [formState, setFormState] = React.useState<EmployeeType>(
+    EmployeeFormState,
+  )
+
+  const submit = (data: EmployeeType) => {}
+
   return (
     <Layout title="Funcionários">
       <>
         <MenuButtons
-          newOnClick={() => {}}
+          totalIdsSelecteds={ids.length}
+          newOnClick={() => setShowForm(showForm ? false : true)}
           editOnClick={() => {}}
           removeOnClick={() => {}}
+          backButton={showForm}
         />
+
+        {showForm && (
+          <Form
+            handleSubmit={submit}
+            formState={formState}
+            update={updateForm}
+          />
+        )}
 
         <List setIds={setIds} ids={ids} />
       </>
