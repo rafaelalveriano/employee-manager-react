@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import { EmployeeReduce } from '../components/Employees/redux'
+import { employeeReduce } from '../components/Employees/redux'
+import { AlertReduce } from '../components/commons/Alert/redux'
 
 export default combineReducers({
-  employees: EmployeeReduce,
+  employees: employeeReduce,
+  alert: AlertReduce,
 })

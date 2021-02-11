@@ -1,7 +1,9 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Layout, MenuButtons } from '../commons'
 import { EmployeeFormState, EmployeeType } from './types'
 import { FetchEmployess } from './hooks'
+import { employeeAction } from './redux'
 import Form from './Form'
 import List from './List'
 
@@ -14,11 +16,13 @@ const Empolyees = () => {
     EmployeeFormState,
   )
   const [load, setLoad] = React.useState(false)
+  const dispatch = useDispatch()
 
   FetchEmployess(setLoad, setEmployees)
 
   const submit = (data: EmployeeType) => {
     setFormState(EmployeeFormState)
+    !updateForm && dispatch(employeeAction.store(data))
     updateForm && setUpdateForm(false)
   }
 
@@ -48,7 +52,7 @@ const Empolyees = () => {
           />
         )}
 
-        <List setIds={setIds} ids={ids} employees={employees} load={load} />
+        <List setIds={setIds} ids={ids} initEmployees={employees} load={load} />
       </>
     </Layout>
   )

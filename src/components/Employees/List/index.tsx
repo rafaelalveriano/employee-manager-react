@@ -3,16 +3,20 @@ import { isEmpty } from 'lodash'
 import { EmployeeType } from '../types'
 import EmployeeTable from './Table'
 import { Load } from '../../commons'
+import { AddNewEmployeeInTable } from '../hooks'
 
 interface Props {
   setIds: React.Dispatch<React.SetStateAction<string[]>>
   ids: string[]
-  employees: EmployeeType[]
+  initEmployees: EmployeeType[]
   load: boolean
 }
 
-const List: React.FC<Props> = ({ setIds, ids, employees, load }) => {
+const List: React.FC<Props> = ({ setIds, ids, initEmployees, load }) => {
+  const [employees, setEmployees] = React.useState<EmployeeType[]>([])
   const [checkBox, setCheckBox] = React.useState<string[]>([])
+
+  AddNewEmployeeInTable(setEmployees, initEmployees)
 
   const handleCheckBoxAll = () => {
     let ids: string[] = []

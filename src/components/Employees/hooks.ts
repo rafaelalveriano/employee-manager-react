@@ -1,6 +1,7 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { HttpClient } from '../../services'
-import { EmployeeType } from './types'
+import { EmployeeType, EmployeeReducer, EmployeeState } from './types'
 
 export const FetchEmployess = (
   setLoad: React.Dispatch<React.SetStateAction<boolean>>,
@@ -11,7 +12,6 @@ export const FetchEmployess = (
     setLoad(true)
     const fetch = async () => {
       const { data } = await HttpClient().get('employees')
-      console.log(data)
       isMounted && setEmployees(data)
     }
     fetch()
@@ -20,4 +20,18 @@ export const FetchEmployess = (
       isMounted = false
     }
   }, [setEmployees, setLoad])
+}
+
+export const AddNewEmployeeInTable = (
+  setEmployees: React.Dispatch<React.SetStateAction<EmployeeType[]>>,
+  initEmployees: EmployeeType[],
+) => {
+  const { response } = useSelector<EmployeeReducer, EmployeeState>(
+    (state) => state.employees,
+  )
+
+  React.useEffect(() => {
+    setEmployees(initEmployees)
+    response.status && setEmployees([...initEmployees, response.data].reverse())
+  }, [initEmployees, setEmployees, response])
 }

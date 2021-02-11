@@ -1,3 +1,3 @@
-export { default as EmployeeAction } from './action'
-export { default as EmployeeReduce } from './reduce'
-export { default as EmployeeSaga } from './saga'
+export { default as employeeAction } from './action'
+export { default as employeeReduce } from './reduce'
+export { default as employeeSaga } from './saga'

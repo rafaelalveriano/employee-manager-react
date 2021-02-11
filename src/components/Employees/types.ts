@@ -30,3 +30,7 @@ export interface EmployeeActionType {
   type: string
   payload: EmployeeType
 }
+
+export interface EmployeeReducer {
+  employees: EmployeeState
+}
