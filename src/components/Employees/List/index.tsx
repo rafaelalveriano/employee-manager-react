@@ -1,6 +1,6 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
-import { EmployeeType } from '../EmployeType'
+import { EmployeeType } from '../types'
 import EmployeeTable from './Table'
 import { Load } from '../../commons'
 

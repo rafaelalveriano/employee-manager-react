@@ -1,6 +1,6 @@
 import React from 'react'
 import { HttpClient } from '../../services'
-import { EmployeeType } from './EmployeType'
+import { EmployeeType } from './types'
 
 export const FetchEmployess = (
   setLoad: React.Dispatch<React.SetStateAction<boolean>>,

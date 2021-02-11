@@ -3,7 +3,7 @@ import { Formik, FormikValues, Form, ErrorMessage } from 'formik'
 import { Button } from 'react-bootstrap'
 import validator from './validator'
 import { ResponsibilitiesType } from '../../Responsibilities/ResponsibilitiesType'
-import { EmployeeType } from '../EmployeType'
+import { EmployeeType } from '../types'
 import { HttpClient } from '../../../services'
 import { Input, Title, BoxInput, Label, Row } from './style'
 
@@ -94,7 +94,7 @@ const FormEmployee: React.FC<Props> = ({ handleSubmit, formState, update }) => {
               </BoxInput>
               <BoxInput w="25%" m="15px">
                 <Label>Salário*:</Label>
-                <Input type="text" name="salary" placeholder="Salário" />
+                <Input type="text" name="salary" placeholder="R$" />
                 <ErrorMessage name="salary" />
               </BoxInput>
             </Row>

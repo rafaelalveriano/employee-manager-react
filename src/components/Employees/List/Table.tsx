@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, Form } from 'react-bootstrap'
-import { EmployeeType } from '../EmployeType'
+import { EmployeeType } from '../types'
 
 interface Props {
   employees: EmployeeType[]

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout, MenuButtons } from '../commons'
-import { EmployeeFormState, EmployeeType } from './EmployeType'
+import { EmployeeFormState, EmployeeType } from './types'
 import { FetchEmployess } from './hooks'
 import Form from './Form'
 import List from './List'
