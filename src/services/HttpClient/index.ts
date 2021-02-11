@@ -1,7 +1,7 @@
 import axios from 'axios'
 import header from './Header'
 
-const HOSTAPI = 'https://sanfir.herokuapp.com/api/'
+const HOSTAPI = 'https://api-employee-manager.herokuapp.com/api/'
 
 const HttpClient = (url?: string) => ({
   get: async (path: string) =>

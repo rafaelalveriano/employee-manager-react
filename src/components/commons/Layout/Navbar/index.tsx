@@ -6,7 +6,7 @@ import { LinkStyle } from './style'
 const NavbarComponent = () => {
   const location = useLocation()
 
-  const active = (page: string) => (page === location.pathname ? true : false)
+  const active = (page: string) => (page === location.pathname ? 1 : 0)
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
