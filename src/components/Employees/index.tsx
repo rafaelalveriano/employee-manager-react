@@ -1,8 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Layout } from '../commons'
+import List from './List'
+
 const Empolyees = () => {
-  return <Layout title="Funcionários">Funcionarios</Layout>
+  return (
+    <Layout title="Funcionários">
+      <List />
+    </Layout>
+  )
 }
 
 export default Empolyees
