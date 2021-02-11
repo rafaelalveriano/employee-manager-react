@@ -1,29 +1,18 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
 import { EmployeeType } from '../EmployeType'
-import { HttpClient } from '../../../services'
 import EmployeeTable from './Table'
 import { Load } from '../../commons'
 
 interface Props {
   setIds: React.Dispatch<React.SetStateAction<string[]>>
   ids: string[]
+  employees: EmployeeType[]
+  load: boolean
 }
 
-const List: React.FC<Props> = ({ setIds, ids }) => {
-  const [employees, setEmployees] = React.useState<EmployeeType[]>([])
-  const [load, setLoad] = React.useState(false)
+const List: React.FC<Props> = ({ setIds, ids, employees, load }) => {
   const [checkBox, setCheckBox] = React.useState<string[]>([])
-
-  React.useEffect(() => {
-    setLoad(true)
-    const fetchEmployees = async () => {
-      const { data } = await HttpClient().get('employees')
-      setEmployees(data)
-    }
-    fetchEmployees()
-    setLoad(false)
-  }, [])
 
   const handleCheckBoxAll = () => {
     let ids: string[] = []

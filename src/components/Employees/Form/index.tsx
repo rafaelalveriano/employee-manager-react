@@ -65,8 +65,18 @@ const FormEmployee: React.FC<Props> = ({ handleSubmit, formState, update }) => {
             <Row>
               <BoxInput w="48%">
                 <Label>Cargos*:</Label>
-                <Input name="responsability" as="select">
-                  <option>Cargos</option>
+                <Input
+                  name="responsability"
+                  as="select"
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                    setFieldValue('responsability', e.target.value)
+                  }
+                >
+                  <option value={formState.responsability}>
+                    {!formState.responsability
+                      ? 'Cargos'
+                      : formState.responsability}
+                  </option>
                   {responsibilities &&
                     responsibilities.map((r, i) => (
                       <option key={i} value={r.description}>
@@ -91,13 +101,13 @@ const FormEmployee: React.FC<Props> = ({ handleSubmit, formState, update }) => {
 
             <Row>
               <Button
-                disabled={!(isValid && dirty)}
+                disabled={!update && !(isValid && dirty)}
                 variant="secondary"
                 type="submit"
                 value="Adicionar"
                 block
               >
-                Adicionar
+                {!update ? 'Adicionar' : 'Editar'}
               </Button>
             </Row>
           </Form>
