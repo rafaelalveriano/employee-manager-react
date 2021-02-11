@@ -18,7 +18,7 @@ const List: React.FC<Props> = ({ setIds, ids }) => {
   React.useEffect(() => {
     setLoad(true)
     const fetchEmployees = async () => {
-      const { data } = await HttpClient().get('empolyees')
+      const { data } = await HttpClient().get('employees')
       setEmployees(data)
     }
     fetchEmployees()
