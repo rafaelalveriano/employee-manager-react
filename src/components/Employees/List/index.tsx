@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash'
 import { EmployeeType } from '../types'
 import EmployeeTable from './Table'
 import { AddNewEmployeeInTable } from '../hooks'
+import FilterResponsability from './FilterResponsability'
 
 interface Props {
   setIds: React.Dispatch<React.SetStateAction<string[]>>
@@ -12,6 +13,9 @@ interface Props {
 
 const List: React.FC<Props> = ({ setIds, ids, initEmployees }) => {
   const [employees, setEmployees] = React.useState<EmployeeType[]>([])
+  const [employeesFiltered, setEmployeesFiltered] = React.useState<
+    EmployeeType[]
+  >([])
   const [checkBox, setCheckBox] = React.useState<string[]>([])
 
   AddNewEmployeeInTable(setEmployees, initEmployees)
@@ -39,13 +43,23 @@ const List: React.FC<Props> = ({ setIds, ids, initEmployees }) => {
     )
   }
 
+  const handleFilter = (param: string) =>
+    setEmployeesFiltered(
+      param === 'all'
+        ? []
+        : initEmployees.filter((e) => e.responsability === param && e),
+    )
+
   return (
-    <EmployeeTable
-      employees={employees}
-      handleCheckBoxAll={handleCheckBoxAll}
-      handleCheckBox={handleCheckBox}
-      checkBox={checkBox}
-    />
+    <>
+      <FilterResponsability handleFilter={handleFilter} />
+      <EmployeeTable
+        employees={!isEmpty(employeesFiltered) ? employeesFiltered : employees}
+        handleCheckBoxAll={handleCheckBoxAll}
+        handleCheckBox={handleCheckBox}
+        checkBox={checkBox}
+      />
+    </>
   )
 }
 
