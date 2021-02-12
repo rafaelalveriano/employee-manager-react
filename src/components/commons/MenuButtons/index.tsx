@@ -10,11 +10,12 @@ import {
 import { BoxMenu, ButtonStyle } from './style'
 
 interface Props {
-  newOnClick: () => void
+  newOnClick?: () => void
   removeOnClick: () => void
   editOnClick: () => void
   totalIdsSelecteds: number
   backButton: boolean
+  hideNewButton?: boolean
 }
 
 const MenuButtons: React.FC<Props> = ({
@@ -23,6 +24,7 @@ const MenuButtons: React.FC<Props> = ({
   editOnClick,
   totalIdsSelecteds,
   backButton,
+  hideNewButton,
 }) => {
   const onClickDelete = () => {
     Swal.fire({
@@ -38,22 +40,24 @@ const MenuButtons: React.FC<Props> = ({
 
   return (
     <BoxMenu>
-      <ButtonStyle
-        variant={backButton ? 'default' : 'primary'}
-        onClick={newOnClick}
-      >
-        {backButton ? (
-          <>
-            <AiOutlineArrowLeft style={{ marginTop: -4, marginRight: 5 }} />
-            Voltar
-          </>
-        ) : (
-          <>
-            <AiOutlineFileAdd style={{ marginTop: -4, marginRight: 5 }} />
-            Novo
-          </>
-        )}
-      </ButtonStyle>
+      {!hideNewButton && (
+        <ButtonStyle
+          variant={backButton ? 'default' : 'primary'}
+          onClick={newOnClick}
+        >
+          {backButton ? (
+            <>
+              <AiOutlineArrowLeft style={{ marginTop: -4, marginRight: 5 }} />
+              Voltar
+            </>
+          ) : (
+            <>
+              <AiOutlineFileAdd style={{ marginTop: -4, marginRight: 5 }} />
+              Novo
+            </>
+          )}
+        </ButtonStyle>
+      )}
 
       {totalIdsSelecteds === 1 && (
         <ButtonStyle variant="warning" onClick={editOnClick}>

@@ -32,6 +32,6 @@ export const AddNewEmployeeInTable = (
 
   React.useEffect(() => {
     setEmployees(initEmployees)
-    response.status && setEmployees([...initEmployees, response.data].reverse())
+    response.status && setEmployees(response.data)
   }, [initEmployees, setEmployees, response])
 }

@@ -2,10 +2,10 @@ import React from 'react'
 import { Formik, FormikValues, Form, ErrorMessage } from 'formik'
 import { Button } from 'react-bootstrap'
 import validator from './validator'
-import { ResponsibilitiesType } from '../../Responsibilities/ResponsibilitiesType'
+import { ResponsibilitiesType } from '../../Responsibilities/types'
 import { EmployeeType } from '../types'
 import { HttpClient } from '../../../services'
-import { Input, Title, BoxInput, Label, Row } from './style'
+import { Input, Title, BoxInput, Label, Row } from '../../commons/Form'
 
 interface Props {
   handleSubmit: any
@@ -14,14 +14,12 @@ interface Props {
 }
 
 const FormEmployee: React.FC<Props> = ({ handleSubmit, formState, update }) => {
-  const [load, setLoad] = React.useState<boolean>(false)
   const [responsibilities, setResponsibilities] = React.useState<
     ResponsibilitiesType[]
   >([])
 
   React.useEffect(() => {
     let isMounted = true
-    setLoad(true)
 
     const fetchResponsibilities = async () => {
       const { data } = await HttpClient().get('responsability')
@@ -29,7 +27,7 @@ const FormEmployee: React.FC<Props> = ({ handleSubmit, formState, update }) => {
     }
 
     fetchResponsibilities()
-    setLoad(false)
+
     return () => {
       isMounted = false
     }

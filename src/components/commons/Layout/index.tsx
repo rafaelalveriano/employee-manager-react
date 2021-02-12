@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Title } from './style'
 import Navbar from './Navbar'
 import Alert from '../Alert'
+import Load from '../Load'
 
 interface Props {
   children: React.ReactChild | React.ReactChildren
@@ -16,6 +17,7 @@ const Layout: React.FC<Props> = ({ children, title }) => (
       <Title>{title}</Title>
       {children}
     </Container>
+    <Load />
   </div>
 )
 

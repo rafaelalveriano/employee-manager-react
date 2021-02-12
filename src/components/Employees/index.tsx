@@ -10,7 +10,7 @@ import List from './List'
 const Empolyees = () => {
   const [employees, setEmployees] = React.useState<EmployeeType[]>([])
   const [ids, setIds] = React.useState<string[]>([])
-  const [showForm, setShowForm] = React.useState(true)
+  const [showForm, setShowForm] = React.useState(false)
   const [updateForm, setUpdateForm] = React.useState(false)
   const [formState, setFormState] = React.useState<EmployeeType>(
     EmployeeFormState,
@@ -34,12 +34,7 @@ const Empolyees = () => {
     setUpdateForm(true)
   }
 
-  const remove = () => {
-    setEmployees(
-      employees.filter((e) => ids.indexOf(e.id as string) === -1 && e),
-    )
-    dispatch(employeeAction.delete(ids))
-  }
+  const remove = () => dispatch(employeeAction.delete(ids))
 
   return (
     <Layout title="Funcionários">
@@ -60,7 +55,7 @@ const Empolyees = () => {
           />
         )}
 
-        <List setIds={setIds} ids={ids} initEmployees={employees} load={load} />
+        <List setIds={setIds} ids={ids} initEmployees={employees} />
       </>
     </Layout>
   )
