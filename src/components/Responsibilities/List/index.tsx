@@ -7,13 +7,13 @@ import { AddInListNewResponsibilities } from '../hooks'
 interface Props {
   initResponsibilities: ResponsibilitiesType[]
   selectId: string[]
-  setSelectId: React.Dispatch<React.SetStateAction<string[]>>
+  editOnClick: (id: string) => void
 }
 
 const ListResponsibilities: React.FC<Props> = ({
   initResponsibilities,
   selectId,
-  setSelectId,
+  editOnClick,
 }) => {
   const [responsibilities, setResponsibilities] = React.useState<
     ResponsibilitiesType[]
@@ -21,7 +21,7 @@ const ListResponsibilities: React.FC<Props> = ({
 
   AddInListNewResponsibilities(initResponsibilities, setResponsibilities)
 
-  const handleItemClick = (id: string) => setSelectId([id])
+  const handleItemClick = (id: string) => editOnClick(id)
 
   return (
     <List>

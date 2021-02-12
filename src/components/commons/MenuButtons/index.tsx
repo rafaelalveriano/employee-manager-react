@@ -12,7 +12,7 @@ import { BoxMenu, ButtonStyle } from './style'
 interface Props {
   newOnClick?: () => void
   removeOnClick: () => void
-  editOnClick: () => void
+  editOnClick?: () => void
   totalIdsSelecteds: number
   backButton: boolean
   hideNewButton?: boolean
@@ -59,7 +59,7 @@ const MenuButtons: React.FC<Props> = ({
         </ButtonStyle>
       )}
 
-      {totalIdsSelecteds === 1 && (
+      {!hideNewButton && totalIdsSelecteds === 1 && (
         <ButtonStyle variant="warning" onClick={editOnClick}>
           <AiOutlineEdit style={{ marginTop: -4, marginRight: 5 }} />
           Editar
