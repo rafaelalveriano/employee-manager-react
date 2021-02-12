@@ -29,6 +29,7 @@ Utilizar bando de dados MySql para armazenar os dados (relacional ou não), outr
 ```sh
 $ cd employee-manager-react
 $ npm install ou yarn
+$ yarn knex migrate:latest ou npx knex migrate:latest
 $ yarn start | npm start
 ```
 
