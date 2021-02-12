@@ -1,6 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { HttpClient } from '../../services'
-import { ResponsibilitiesType } from './types'
+import {
+  ResponsibilitiesType,
+  ResponsibilitiesReducer,
+  ResponsibilitiesState,
+} from './types'
 
 export const FetchResponsibilities = (
   setResponsibilities: React.Dispatch<
@@ -28,7 +33,12 @@ export const AddInListNewResponsibilities = (
     React.SetStateAction<ResponsibilitiesType[]>
   >,
 ) => {
+  const { response } = useSelector<
+    ResponsibilitiesReducer,
+    ResponsibilitiesState
+  >((state) => state.responsability)
   React.useEffect(() => {
     setResponsibilities(initResponsibilities)
-  }, [initResponsibilities, setResponsibilities])
+    response.status && setResponsibilities(response.data)
+  }, [initResponsibilities, setResponsibilities, response])
 }

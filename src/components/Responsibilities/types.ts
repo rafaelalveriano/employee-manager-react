@@ -23,3 +23,7 @@ export enum ResponsibilitiesActionMap {
   DELETE = '@redux/RESPONSIBILITIES_DELETE',
   RESPONSE = '@redux/RESPONSIBILITIES_RESPONSE',
 }
+
+export interface ResponsibilitiesReducer {
+  responsability: ResponsibilitiesState
+}

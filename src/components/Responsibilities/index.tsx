@@ -26,6 +26,8 @@ const Responsibilities = () => {
   const submit = (data: ResponsibilitiesType) => {
     !formUpdate && dispatch(responsabilityAction.store(data))
     formUpdate && dispatch(responsabilityAction.update(data))
+    setFormState(ResponsibilitiesFormState)
+    setFormUpdate(false)
   }
 
   const editOnClick = (id: string) => {
