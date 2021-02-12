@@ -72,7 +72,9 @@ const FormEmployee: React.FC<Props> = ({ handleSubmit, formState, update }) => {
                     setFieldValue('responsability', e.target.value)
                   }
                 >
-                  <option value={formState.responsability}>
+                  <option
+                    value={formState.responsability && formState.responsability}
+                  >
                     {!formState.responsability
                       ? 'Cargos'
                       : formState.responsability}

@@ -1,4 +1,6 @@
 import React from 'react'
+import Swal from 'sweetalert2'
+
 import {
   AiOutlineFileAdd,
   AiOutlineEdit,
@@ -22,6 +24,18 @@ const MenuButtons: React.FC<Props> = ({
   totalIdsSelecteds,
   backButton,
 }) => {
+  const onClickDelete = () => {
+    Swal.fire({
+      title: 'Deseja realmente excluir este registro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => result.isConfirmed && removeOnClick())
+  }
+
   return (
     <BoxMenu>
       <ButtonStyle
@@ -48,7 +62,7 @@ const MenuButtons: React.FC<Props> = ({
         </ButtonStyle>
       )}
       {totalIdsSelecteds > 0 && (
-        <ButtonStyle variant="danger" onClick={removeOnClick}>
+        <ButtonStyle variant="danger" onClick={onClickDelete}>
           <AiOutlineDelete style={{ marginTop: -4, marginRight: 5 }} />
           Excluir
         </ButtonStyle>

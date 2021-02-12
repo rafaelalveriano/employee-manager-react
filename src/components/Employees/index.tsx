@@ -23,6 +23,7 @@ const Empolyees = () => {
   const submit = (data: EmployeeType) => {
     setFormState(EmployeeFormState)
     !updateForm && dispatch(employeeAction.store(data))
+    updateForm && dispatch(employeeAction.update(data))
     updateForm && setUpdateForm(false)
   }
 
@@ -33,6 +34,13 @@ const Empolyees = () => {
     setUpdateForm(true)
   }
 
+  const remove = () => {
+    setEmployees(
+      employees.filter((e) => ids.indexOf(e.id as string) === -1 && e),
+    )
+    dispatch(employeeAction.delete(ids))
+  }
+
   return (
     <Layout title="Funcionários">
       <>
@@ -40,7 +48,7 @@ const Empolyees = () => {
           totalIdsSelecteds={ids.length}
           newOnClick={() => setShowForm(showForm ? false : true)}
           editOnClick={editOnClick}
-          removeOnClick={() => {}}
+          removeOnClick={remove}
           backButton={showForm}
         />
 

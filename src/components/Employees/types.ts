@@ -19,6 +19,7 @@ export enum EmployeeActionMap {
   LIST = '@redux/EMPLOYEE_LIST',
   STORE = '@redux/EMPLOYEE_STORE',
   UPDATE = '@redux/EMPLOYEE_UPDATE',
+  DELETE = '@redux/EMPLOYEE_DELETE',
   RESPONSE = '@redux/EMPLOYEE_RESPONSE',
 }
 
