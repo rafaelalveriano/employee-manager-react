@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, Form } from 'react-bootstrap'
 import { EmployeeType } from '../types'
+import { formatDate } from '../../../utils'
 
 interface Props {
   employees: EmployeeType[]
@@ -46,7 +47,7 @@ const EmployeeTable: React.FC<Props> = ({
             <td>{employee.firstName}</td>
             <td>{employee.lastName}</td>
             <td>{employee.responsability}</td>
-            <td>{employee.birthdata}</td>
+            <td>{formatDate(employee.birthdata)}</td>
             <td>{employee.salary}</td>
           </tr>
         ))}
